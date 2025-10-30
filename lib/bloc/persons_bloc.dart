@@ -1,6 +1,5 @@
 import 'package:bloc_practice_1/bloc/bloc_actions.dart';
 import 'package:bloc_practice_1/bloc/person.dart';
-import 'package:bloc_practice_1/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +19,7 @@ class FetchResult {
 
   @override
   bool operator ==(covariant FetchResult other) =>
-      persons.isEqualToIgnoringOrder(other.persons) &&
+      persons.isEqualToIgnoringOrdering(other.persons) &&
       isRetrievedFromCache == other.isRetrievedFromCache;
 
   @override
@@ -28,8 +27,8 @@ class FetchResult {
       Object.hash(persons, isRetrievedFromCache);
 }
 
-extension isEqualToIgnoringOrdering<T> on Iterable<T> {
-  bool isEqualToIgnoringOrder(Iterable<T> other) =>
+extension IsEqualToIgnoringOrdering<T> on Iterable<T> {
+  bool isEqualToIgnoringOrdering(Iterable<T> other) =>
       length == other.length &&
       {...this}.intersection({...other}).length == length;
 }
